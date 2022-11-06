@@ -42,18 +42,18 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment()) // Development Environment
 {
     app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        var myString = "letsReadTheApiDoc"; // Swagger Doc = https://localhost:5827/letsReadTheApiDoc
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = myString;
-    });
+    app.UseSwaggerUI();
 }
 
 if (app.Environment.IsProduction()) // Production Environment (Lambda Deployed) check security :)
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        var myString = "letsReadTheApiDoc"; // Swagger Doc Production Environment
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.RoutePrefix = myString;
+    });
 }
 
 app.UseHttpsRedirection();
