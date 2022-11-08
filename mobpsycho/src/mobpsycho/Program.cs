@@ -11,7 +11,7 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddControllers(); // Add controllers
 
 // Read more about conf. DBContext https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext
-builder.Services.AddDbContext<MobpsychoDbContext>(options => options.UseSqlServer("name=mobpsychoLocalDB")); // Look ConnectionStrings
+builder.Services.AddDbContext<MobpsychoDbContext>(options => options.UseSqlServer("name=mobpsychoHostedDB")); // Look ConnectionStrings
 
 builder.Services.AddSwaggerGen(); // Swagger
 
