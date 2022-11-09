@@ -11,7 +11,11 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddControllers(); // Add controllers
 
 // Read more about conf. DBContext https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext
-builder.Services.AddDbContext<MobpsychoDbContext>(options => options.UseSqlServer("name=mobpsychoHostedDB")); // Look ConnectionStrings
+// ConnectionStrings
+var MyLocalConnection = builder.Configuration.GetConnectionString("mobpsychoLocalDB");
+
+builder.Services.AddDbContext<MobpsychoDbContext>(options => options.UseSqlServer(MyLocalConnection));
+
 
 builder.Services.AddSwaggerGen(); // Swagger
 
@@ -61,6 +65,6 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 app.MapControllers();
 
-app.MapGet("/index.html", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda");
+app.MapGet("/", () => "Welcome to running ASP.NET Core Minimal API on AWS Lambda");
 
 app.Run();
