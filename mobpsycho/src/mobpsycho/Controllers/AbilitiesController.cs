@@ -103,5 +103,22 @@ namespace mobpsycho.Controllers
         {
             return _context.Abilities.Any(e => e.IdAbilitie == id);
         }
+
+        // version 2.0
+        [HttpPost]
+        public async Task<Response<AbilitieResponse>> CreateAbilitie([FromBody] AbilitieResponse a)
+        {
+            Abilitie abilitie = new Abilitie();
+
+            abilitie.Name = a.Name;
+            abilitie.Description = a.Description;
+            abilitie.IdCharacter = a.IdCharacter;
+
+            _context.Abilities.Add(abilitie);
+            await _context.SaveChangesAsync();
+
+            return new Response<AbilitieResponse>("Ok", a);
+        }
+
     }
 }

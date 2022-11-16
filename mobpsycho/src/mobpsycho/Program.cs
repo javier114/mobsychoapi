@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
 using mobpsycho.Models;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -14,4 +14,11 @@ namespace mobpsycho.Models
         [ForeignKey("IdCharacter")]
         public Character? Character { get; set; } // Relationship = One -
     }
+    // version 2.0
+    public class AbilitieResponse
+    {
+        public string Name { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public int IdCharacter { get; set; }
+    }
 }
